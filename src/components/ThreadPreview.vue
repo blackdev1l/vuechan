@@ -6,17 +6,17 @@
     .description {{ description }}
 
   .extra.content
-    i.comment.icon
+    i.comment.icon {{replies}}
 
 
 </template>
 
 <script>
   export default {
-    name: 'thread',
-    props: ['threadId', 'img', 'description'],
+    name: 'threadPreview',
+    props: ['img', 'description', 'board', 'replies'],
     beforeMount () {
-      this.imglink = 'https://t.4cdn.org/b/' + this.img
+      this.imglink = 'https://t.4cdn.org' + '/' + this.board + '/' + this.img
     },
     data () {
       return {

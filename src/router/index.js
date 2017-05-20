@@ -8,7 +8,7 @@ export default new Router({
   routes: [
     {
       path: '/:board',
-      name: 'Catalog',
+      name: 'catalog',
       component: Catalog
     }
   ]

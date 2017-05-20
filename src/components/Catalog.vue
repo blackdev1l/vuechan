@@ -2,36 +2,41 @@
   .ui.container
     .ui.four.column.grid
       .column(v-for='thread in threads')
-        thread(:description="thread.description", :id="thread.id", :img="thread.img")
+        threadPreview(:description="thread.description", :img="thread.img", :board="board", :replies="thread.replies")
 
 </template>
 
 <script>
-import Thread from './Thread.vue'
+import ThreadPreview from './ThreadPreview.vue'
 import axios from 'axios'
 
 export default {
-  name: 'Catalog',
-  beforeMount () {
-    console.log('beforeMount')
-    axios.get('https://cors-anywhere.herokuapp.com/https://a.4cdn.org/' + this.board + '/catalog.json')
+  name: 'catalog',
+  data () {
+    return {
+      threads: [],
+      board: ''
+    }
+  },
+  components: {
+    ThreadPreview
+  },
+  watch: {
+    '$route' (data) {
+      this.board = data.path
+      this.threads = []
+      axios.get('https://cors-anywhere.herokuapp.com/https://a.4cdn.org' + this.board + '/catalog.json')
       .then((response) => {
         response.data[0].threads.forEach(e => {
           this.threads.push({
             id: e.no,
             description: e.com,
-            img: e.tim + e.ext
+            img: e.tim + e.ext,
+            replies: e.replies
           })
         })
       })
-  },
-  data () {
-    return {
-      threads: []
     }
-  },
-  components: {
-    Thread
   }
 }
 </script>
