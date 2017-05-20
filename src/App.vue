@@ -1,7 +1,7 @@
 <template lang="pug">
   .app
     .ui.sidebar.inverted.vertical.menu
-      a.item(v-for="menu in menus") {{menu.board}}
+      router-link.item(v-for="menu in menus" :key="menu.board" :to="{name: 'Catalog' ,params: { board: menu.board}}") {{menu.title}}
     .ui.fixed.inverted.menu
         a.header.item(v-on:click="showBar") VueChan
     .pusher
@@ -9,10 +9,11 @@
 </template>
 
 <script>
+import axios from 'axios'
+import jquery from 'jquery'
 export default {
   name: 'app',
   beforeMount () {
-    var axios = require('axios')
     axios.get('https://cors-anywhere.herokuapp.com/https://a.4cdn.org/boards.json')
       .then(response => {
         response.data.boards.forEach(e => {
@@ -30,8 +31,7 @@ export default {
   },
   methods: {
     showBar: function () {
-      var jQuery = require('jquery')
-      jQuery('.sidebar').sidebar('toggle')
+      jquery('.sidebar').sidebar('toggle')
     }
   }
 }

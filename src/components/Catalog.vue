@@ -8,22 +8,22 @@
 
 <script>
 import Thread from './Thread.vue'
+import axios from 'axios'
 
 export default {
   name: 'Catalog',
   beforeMount () {
-    this.msg = 'test'
-    var axios = require('axios')
-    axios.get('https://cors-anywhere.herokuapp.com/https://a.4cdn.org/b/catalog.json')
-    .then((response) => {
-      response.data[0].threads.forEach(e => {
-        this.threads.push({
-          id: e.no,
-          description: e.com,
-          img: e.tim + e.ext
+    console.log('beforeMount')
+    axios.get('https://cors-anywhere.herokuapp.com/https://a.4cdn.org/' + this.board + '/catalog.json')
+      .then((response) => {
+        response.data[0].threads.forEach(e => {
+          this.threads.push({
+            id: e.no,
+            description: e.com,
+            img: e.tim + e.ext
+          })
         })
       })
-    })
   },
   data () {
     return {
