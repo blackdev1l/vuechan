@@ -30,7 +30,7 @@ export default {
         response.data[0].threads.forEach(e => {
           this.threads.push({
             id: e.no,
-            description: e.com,
+            description: e.com.substr(0, 150),
             img: e.tim + e.ext,
             replies: e.replies
           })
