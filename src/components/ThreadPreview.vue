@@ -2,8 +2,7 @@
 .ui.card
   .image
     img(v-bind:src="imglink")
-  .content
-    .description(v-html="description")
+  .content(v-html="description")
 
   .extra.content
     i.comment.icon {{replies}}
