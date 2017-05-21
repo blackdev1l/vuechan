@@ -3,10 +3,11 @@
   .image
     img(v-bind:src="imglink")
   .content
-    .description {{ description }}
+    .description(v-html="description")
 
   .extra.content
     i.comment.icon {{replies}}
+    button.ui.button.primary.tiny.right.floated view thread
 
 
 </template>
