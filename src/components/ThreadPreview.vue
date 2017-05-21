@@ -1,5 +1,5 @@
 <template lang="pug">
-.ui.card
+.ui.fluid.card
   .image
     img(v-bind:src="imglink")
   .content(v-html="description")

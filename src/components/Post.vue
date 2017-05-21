@@ -1,7 +1,8 @@
 <template lang="pug">
-    .ui.card
+    .ui.fluid.card
       .image
-        img(v-bind:src="imglink")
+        a(v-bind:href="imglink")
+          img(v-bind:src="imglink")
       .content
         .header {{name}}
         .meta 

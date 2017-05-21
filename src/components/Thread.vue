@@ -1,6 +1,6 @@
 <template lang="pug">
   .thread.ui.container
-    .ui.four.column.grid
+    .ui.one.column.centered.grid.cards
       .column(v-for='p in posts')
         post(
           :id="p.id",
