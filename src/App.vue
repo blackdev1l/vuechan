@@ -12,11 +12,6 @@ export default {
   name: 'app',
   components: {
     Sidebar
-  },
-  events: {
-    'changeBoard': function (data) {
-      this.$broadcast('changeBoard', data)
-    }
   }
 }
 </script>

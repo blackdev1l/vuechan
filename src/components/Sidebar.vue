@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     .ui.left.sidebar.inverted.vertical.menu
-      router-link.item(v-for="menu in menus" :key="menu.board" :to="{name: 'catalog' ,params: { board: menu.board}}") {{menu.title}}
+      router-link.item(v-on:click="hideBar" v-for="menu in menus" :key="menu.board" :to="{name: 'catalog' ,params: { board: menu.board}}") {{menu.title}}
     .ui.fixed.inverted.menu
       a.header.item(v-on:click="showBar") VueChan
 </template>
@@ -33,9 +33,7 @@
       showBar: function () {
         jquery('.sidebar').sidebar('show')
       },
-      changeBoard: function (board) {
-        console.log('board is ' + board)
-        this.dispatch('changeBoard', board)
+      hideBar: function () {
         jquery('.sidebar').sidebar('hide')
       }
     }

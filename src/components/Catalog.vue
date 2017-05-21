@@ -2,7 +2,13 @@
   .ui.container
     .ui.four.column.grid
       .column(v-for='thread in threads')
-        threadPreview(:description="thread.description", :img="thread.img", :board="board", :replies="thread.replies")
+        threadPreview(
+          :id="thread.id", 
+          :description="thread.description", 
+          :img="thread.img", 
+          :board="board", 
+          :replies="thread.replies"
+        )
 
 </template>
 
