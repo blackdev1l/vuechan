@@ -15,7 +15,7 @@
     props: ['id', 'img', 'name', 'comment', 'date', 'board', 'ext'],
     beforeMount () {
       if (this.img !== undefined) {
-        this.imglink = 'https://i.4cdn.org' + this.board + '/' + this.img + this.ext
+        this.imglink = 'http://i.4cdn.org' + this.board + '/' + this.img + this.ext
       }
     },
     data () {
