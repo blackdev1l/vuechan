@@ -1,7 +1,6 @@
 <template lang="pug">
     .ui.fluid.card
       .image
-        a(v-bind:href="imglink")
           img(v-bind:src="imglink")
       .content
         .header {{name}}
