@@ -1,6 +1,6 @@
 <template lang="pug">
   .ui.container
-    .ui.four.column.grid
+    .ui.four.column.grid.stackable.cards
       .column(v-for='thread in threads')
         threadPreview(
           :id="thread.id", 
