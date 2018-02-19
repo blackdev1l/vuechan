@@ -3,10 +3,10 @@
     .ui.four.column.grid.stackable.cards
       .column(v-for='thread in threads')
         threadPreview(
-          :id="thread.id", 
-          :description="thread.description", 
-          :img="thread.img", 
-          :board="board", 
+          :id="thread.id",
+          :description="thread.description",
+          :img="thread.img",
+          :board="board",
           :replies="thread.replies"
         )
 
@@ -33,12 +33,14 @@ export default {
       this.threads = []
       axios.get('https://cors-anywhere.herokuapp.com/https://a.4cdn.org' + this.board + '/catalog.json')
       .then((response) => {
-        response.data[0].threads.forEach(e => {
-          this.threads.push({
+        response.data.forEach(f => {
+          f.threads.forEach(e => {
+            this.threads.push({
             id: e.no,
             description: e.com.substr(0, 150),
             img: e.tim + e.ext,
             replies: e.replies
+            })
           })
         })
       })
